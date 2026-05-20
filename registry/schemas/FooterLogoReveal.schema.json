@@ -1,0 +1,17 @@
+{
+  "name": "FooterLogoReveal",
+  "propsSchema": {
+    "logoSrc?": "string",
+    "logoAlt?": "string",
+    "logoText": "string (required)",
+    "leftLink": "{ text: string, onClick?: () => void, href?: string } (required)",
+    "rightLink": "{ text: string, onClick?: () => void, href?: string } (required)",
+    "ariaLabel?": "string (default: 'Site footer')",
+    "className?": "string",
+    "wrapperClassName?": "string",
+    "containerClassName?": "string",
+    "logoClassName?": "string",
+    "logoImageClassName?": "string",
+    "linkClassName?": "string"
+  }
+}

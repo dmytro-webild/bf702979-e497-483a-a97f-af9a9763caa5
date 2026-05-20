@@ -1,0 +1,9 @@
+export { default as TestimonialCardFifteen } from './TestimonialCardFifteen';
+export { default as TestimonialCardFive } from './TestimonialCardFive';
+export { default as TestimonialCardOne } from './TestimonialCardOne';
+export { default as TestimonialCardSix } from './TestimonialCardSix';
+export { default as TestimonialCardSixteen } from './TestimonialCardSixteen';
+export { default as TestimonialCardTen } from './TestimonialCardTen';
+export { default as TestimonialCardThirteen } from './TestimonialCardThirteen';
+export { default as TestimonialCardTwelve } from './TestimonialCardTwelve';
+export { default as TestimonialCardTwo } from './TestimonialCardTwo';

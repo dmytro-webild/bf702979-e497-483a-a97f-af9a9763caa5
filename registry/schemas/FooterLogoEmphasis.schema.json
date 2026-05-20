@@ -1,0 +1,19 @@
+{
+  "name": "FooterLogoEmphasis",
+  "propsSchema": {
+    "logoSrc?": "string",
+    "logoAlt?": "string",
+    "columns": "Array<{ items: Array<{ label: string, href?: string, onClick?: () => void }> }> - Footer navigation columns (required, max 5)",
+    "logoText": "string (required)",
+    "ariaLabel?": "string (default: 'Site footer')",
+    "className?": "string",
+    "containerClassName?": "string",
+    "logoClassName?": "string",
+    "logoImageClassName?": "string",
+    "columnsClassName?": "string",
+    "columnClassName?": "string",
+    "itemClassName?": "string",
+    "iconClassName?": "string",
+    "buttonClassName?": "string"
+  }
+}

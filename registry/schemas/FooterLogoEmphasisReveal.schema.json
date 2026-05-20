@@ -1,0 +1,19 @@
+{
+  "name": "FooterLogoEmphasisReveal",
+  "propsSchema": {
+    "columns": "Array<{ items: Array<{ label: string, href?: string, onClick?: () => void }> }>",
+    "logoText": "string",
+    "ariaLabel?": "string (default: 'Site footer')",
+    "className?": "string",
+    "wrapperClassName?": "string",
+    "containerClassName?": "string",
+    "footerClassName?": "string",
+    "footerContainerClassName?": "string",
+    "logoClassName?": "string",
+    "columnsClassName?": "string",
+    "columnClassName?": "string",
+    "itemClassName?": "string",
+    "iconClassName?": "string",
+    "buttonClassName?": "string"
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "name": "HeroOverlayTestimonial",
+  "description": "Full-screen hero section with background image/video overlay, circular blur effect, bottom-left text positioning, and rotating testimonial card.",
+  "details": "Use for dramatic, immersive landing pages with strong visual impact and social proof. Features full viewport height with background media (image or video), text overlay positioned at bottom-left for modern editorial layouts, and a testimonial card with star ratings at bottom-right. Includes optional circular blur effect with radial gradient mask (enabled by default) and optional dim overlay for improved text readability. Testimonials rotate automatically with configurable interval. Text automatically styled with light colors for visibility over background media. Testimonial card is hidden on mobile for better layout.",
+  "constraints": {
+    "textRules": {
+      "title": {
+        "required": true,
+        "example": "Build Modern Web Experiences",
+        "minChars": 2,
+        "maxChars": 40
+      },
+      "description": {
+        "required": true,
+        "example": "Create stunning, responsive websites with our comprehensive component library",
+        "minChars": 5,
+        "maxChars": 200
+      },
+      "tag": {
+        "required": false,
+        "example": "New Release",
+        "minChars": 2,
+        "maxChars": 30
+      }
+    },
+    "testimonialRules": {
+      "name": {
+        "required": true,
+        "example": "Sarah Johnson",
+        "minChars": 2,
+        "maxChars": 50
+      },
+      "handle": {
+        "required": true,
+        "example": "CEO, TechCorp",
+        "minChars": 2,
+        "maxChars": 50
+      },
+      "testimonial": {
+        "required": true,
+        "example": "This component library transformed our development workflow.",
+        "minChars": 10,
+        "maxChars": 200
+      },
+      "rating": {
+        "required": true,
+        "example": 5,
+        "min": 1,
+        "max": 5
+      },
+      "imageSrc": {
+        "required": false,
+        "example": "/testimonials/sarah.jpg"
+      },
+      "imageAlt": {
+        "required": false,
+        "example": "Sarah Johnson"
+      }
+    },
+    "itemRules": {
+      "minItems": 1,
+      "maxItems": 10,
+      "recommendedItems": "3-5",
+      "note": "Multiple testimonials rotate automatically. At least one testimonial required."
+    },
+    "mediaRules": {
+      "imageSrc": {
+        "required": false,
+        "example": "/hero-background.jpg",
+        "note": "Background image that fills the viewport. Supports external URLs with unoptimized prop. Either imageSrc or videoSrc should be provided. Image is recommended if no videoSrc."
+      },
+      "videoSrc": {
+        "required": false,
+        "example": "/hero-background.mp4",
+        "note": "Background video that fills the viewport. Takes precedence over imageSrc if both provided"
+      },
+      "imageAlt": {
+        "required": false,
+        "example": "Hero background",
+        "note": "Empty string marks image as decorative (aria-hidden)"
+      },
+      "showBlur": {
+        "required": false,
+        "default": true,
+        "note": "Controls circular blur effect with radial gradient at bottom-left corner"
+      },
+      "showDimOverlay": {
+        "required": false,
+        "default": false,
+        "note": "Adds semi-transparent dark overlay (bg-background/20) over background media for improved text contrast"
+      }
+    },
+    "buttonRules": {
+      "maxButtons": 2,
+      "structure": {
+        "text": "string - Button label (required)",
+        "href": "string - Link destination (optional). External URLs (https://, http://, www.) open in new tab. Internal values (e.g., 'about', 'contact') scroll to #about, #contact sections",
+        "onClick": "() => void - Additional click handler (optional)",
+        "props": "Partial<ButtonPropsForVariant> - Additional button props like className, textClassName (optional)"
+      },
+      "examples": [
+        "{ text: 'Get Started', href: 'https://example.com' }",
+        "{ text: 'Learn More', href: 'about' }"
+      ],
+      "note": "Button variant is controlled by ThemeProvider's defaultButtonVariant. Border radius is controlled by ThemeProvider's borderRadius (options: 'sharp', 'rounded', 'soft', 'pill'). All sections should be wrapped in a single ThemeProvider at the app/page level to maintain consistent styling across the entire site."
+    }
+  },
+  "propsSchema": {
+    "title": "string",
+    "description": "string",
+    "testimonials": "Array<{ name: string, handle: string, testimonial: string, rating: number, imageSrc?: string, imageAlt?: string }>",
+    "testimonialRotationInterval?": "number (default: 5000)",
+    "tag?": "string",
+    "tagIcon?": "LucideIcon",
+    "tagAnimation?": "'none' | 'opacity' | 'slide-up' | 'blur-reveal'",
+    "buttons?": "Array<{text: string, onClick?: () => void, href?: string}>",
+    "buttonAnimation?": "'none' | 'opacity' | 'slide-up' | 'blur-reveal'",
+    "avatars?": "Array<{ src: string, alt: string }>",
+    "avatarText?": "string",
+    "imageSrc?": "string",
+    "videoSrc?": "string",
+    "imageAlt?": "string (default: '')",
+    "videoAriaLabel?": "string (default: 'Hero video')",
+    "showDimOverlay?": "boolean (default: false)",
+    "showBlur?": "boolean (default: true)",
+    "textPosition?": "'top' | 'bottom' (default: 'bottom')",
+    "ariaLabel?": "string (default: 'Hero section')",
+    "className?": "string",
+    "containerClassName?": "string",
+    "textBoxClassName?": "string",
+    "titleClassName?": "string",
+    "descriptionClassName?": "string",
+    "tagClassName?": "string",
+    "buttonContainerClassName?": "string",
+    "buttonClassName?": "string",
+    "buttonTextClassName?": "string",
+    "avatarGroupClassName?": "string",
+    "mediaWrapperClassName?": "string",
+    "imageClassName?": "string",
+    "blurClassName?": "string",
+    "dimOverlayClassName?": "string",
+    "testimonialCardClassName?": "string",
+    "testimonialContentClassName?": "string",
+    "testimonialTextClassName?": "string",
+    "testimonialRatingClassName?": "string",
+    "testimonialAuthorClassName?": "string",
+    "testimonialAuthorImageClassName?": "string",
+    "testimonialAuthorNameClassName?": "string",
+    "testimonialAuthorHandleClassName?": "string"
+  },
+  "usageExample": "<ThemeProvider defaultButtonVariant=\"hover-bubble\" defaultTextAnimation=\"entrance-slide\" borderRadius=\"pill\">\n  <HeroOverlayTestimonial \n    title=\"Build Modern Web Experiences\" \n    description=\"Create stunning, responsive websites with our comprehensive component library\" \n    tag=\"New Release\" \n    imageSrc=\"/hero-background.jpg\" \n    imageAlt=\"Hero background\"\n    showBlur={true}\n    showDimOverlay={false}\n    testimonials={[{ name: 'Sarah Johnson', handle: 'CEO, TechCorp', testimonial: 'This transformed our workflow!', rating: 5 }]}\n    buttons={[{ text: 'Get Started', href: 'https://example.com' }, { text: 'Learn More', href: 'about' }]} \n  />\n</ThemeProvider>",
+  "do": [
+    "Use for landing pages",
+    "Use for feature showcases",
+    "Use for social proof sections",
+    "Requires testimonials[]"
+  ],
+  "dont": [
+    "Do not use without testimonials",
+    "Do not use less than 1 testimonial"
+  ],
+  "editRules": {
+    "textOnly": true,
+    "layoutLocked": true,
+    "styleLocked": true
+  }
+}

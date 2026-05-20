@@ -1,0 +1,111 @@
+{
+  "name": "FeatureTimelineBento",
+  "description": "Timeline-based feature section with scroll-triggered stacking animations and bento component visualizations instead of images.",
+  "details": "Use for process flows, roadmaps, or sequential feature presentations with interactive visualizations. Each card displays a numbered step badge, title, description, and a bento component visualization in a two-column layout. As you scroll, cards stack on top of each other with fade animations. The timeline layout provides a clear visual progression through steps or stages. Supports 15 bento types: globe, icon-info-cards, animated-bar-chart, 3d-stack-cards, 3d-task-list, orbiting-icons, map, marquee, line-chart, 3d-card-grid, phone, chat, reveal-icon, timeline, media-stack. No grid/carousel modes - uses fixed timeline stacking layout with GSAP ScrollTrigger. Optional header with title, description, tag, and buttons. Header supports centered or split textbox layout.",
+  "constraints": {
+    "textRules": {
+      "title": {
+        "required": true,
+        "example": "Our Process",
+        "minChars": 2,
+        "maxChars": 35
+      },
+      "description": {
+        "required": true,
+        "example": "Discover how we bring ideas to life",
+        "minChars": 5,
+        "maxChars": 250
+      },
+      "tag": {
+        "required": false,
+        "example": "Process",
+        "minChars": 2,
+        "maxChars": 30
+      }
+    },
+    "featureCardRules": {
+      "title": {
+        "required": true,
+        "example": "Research & Planning",
+        "minChars": 2,
+        "maxChars": 50
+      },
+      "description": {
+        "required": true,
+        "example": "Understanding user needs, market trends, and project requirements",
+        "minChars": 10,
+        "maxChars": 300
+      }
+    },
+    "bentoComponentRules": {
+      "note": "CRITICAL: Each feature MUST use a DIFFERENT bentoComponent type. Never repeat the same type across features (e.g., don't use 'timeline' twice). Requirements vary by type:",
+      "types": {
+        "globe": "{ bentoComponent: 'globe' } - No additional fields required",
+        "animated-bar-chart": "{ bentoComponent: 'animated-bar-chart' } - No additional fields required",
+        "map": "{ bentoComponent: 'map' } - No additional fields required",
+        "line-chart": "{ bentoComponent: 'line-chart' } - No additional fields required",
+        "icon-info-cards": "{ bentoComponent: 'icon-info-cards', items: Array<{ icon: LucideIcon, label: string, value: string }> } - Requires items array",
+        "3d-stack-cards": "{ bentoComponent: '3d-stack-cards', items: [Bento3DItem, Bento3DItem, Bento3DItem] } - Requires exactly 3 items. Each item: { icon: LucideIcon, title: string, subtitle: string, detail: string }",
+        "3d-task-list": "{ bentoComponent: '3d-task-list', bentoTitle: string, items: Array<{ icon: LucideIcon, label: string, time: string }> } - Requires bentoTitle (not title) and items array",
+        "orbiting-icons": "{ bentoComponent: 'orbiting-icons', centerIcon: LucideIcon, items: Array<{ icon: LucideIcon, ring?: 1 | 2 | 3, duration?: number }> } - Requires centerIcon and items array",
+        "marquee": "{ bentoComponent: 'marquee', centerIcon: LucideIcon, variant: 'text' | 'icon', texts?: string[], icons?: LucideIcon[] } - Requires centerIcon and variant",
+        "phone": "{ bentoComponent: 'phone', statusIcon: LucideIcon, alertIcon: LucideIcon, alertTitle: string, alertMessage: string, apps: PhoneApps8 } - Requires all fields",
+        "chat": "{ bentoComponent: 'chat', aiIcon: LucideIcon, userIcon: LucideIcon, exchanges: Array<{ userMessage: string, aiResponse: string }>, placeholder: string } - Requires all fields",
+        "3d-card-grid": "{ bentoComponent: '3d-card-grid', items: [GridCardItem x4], centerIcon: LucideIcon } - Requires exactly 4 items and centerIcon",
+        "reveal-icon": "{ bentoComponent: 'reveal-icon', icon: LucideIcon } - Requires icon",
+        "timeline": "{ bentoComponent: 'timeline', heading: string, subheading: string, items: [TimelineItem x3], completedLabel: string } - Requires exactly 3 items",
+        "media-stack": "{ bentoComponent: 'media-stack', items: [MediaStackItem x3] } - Requires exactly 3 items"
+      }
+    }
+  },
+  "propsSchema": {
+    "features": "Array<{ title: string, description: string, buttons?: ButtonConfig[] } & BentoComponentVariant> - Each card has title, description, optional buttons, and one bentoComponent type with its required props",
+    "title": "string (required)",
+    "titleSegments?": "Array<{ type: 'text', content: string } | { type: 'image', src: string, alt?: string }> - For inline images in title",
+    "description": "string (required)",
+    "tag?": "string",
+    "tagIcon?": "LucideIcon",
+    "tagAnimation?": "'none' | 'opacity' | 'slide-up' | 'blur-reveal'",
+    "buttons?": "Array<{text: string, onClick?: () => void, href?: string}>",
+    "buttonAnimation?": "'none' | 'opacity' | 'slide-up' | 'blur-reveal'",
+    "textboxLayout": "'default' | 'split' | 'split-actions' | 'split-description' | 'inline-image' (required)",
+    "useInvertedBackground": "boolean (required)",
+    "ariaLabel?": "string (default: 'Feature section')",
+    "className?": "string",
+    "containerClassName?": "string",
+    "textBoxTitleClassName?": "string",
+    "textBoxDescriptionClassName?": "string",
+    "textBoxClassName?": "string",
+    "textBoxTagClassName?": "string",
+    "textBoxButtonContainerClassName?": "string",
+    "textBoxButtonClassName?": "string",
+    "textBoxButtonTextClassName?": "string",
+    "titleImageWrapperClassName?": "string",
+    "titleImageClassName?": "string",
+    "cardContentClassName?": "string",
+    "stepNumberClassName?": "string",
+    "cardTitleClassName?": "string",
+    "cardDescriptionClassName?": "string",
+    "bentoContainerClassName?": "string",
+    "cardButtonClassName?": "string",
+    "cardButtonTextClassName?": "string"
+  },
+  "usageExample": "<FeatureTimelineBento features={[{ title: 'Global Analytics', description: 'Track performance worldwide', bentoComponent: 'globe' }, { title: 'Team Metrics', description: 'Monitor team performance', bentoComponent: 'icon-info-cards', items: [{icon: Users, label: 'Active', value: '1,234'}] }]} title=\"Our Process\" description=\"See how it works\" textboxLayout=\"default\" useInvertedBackground={false} />",
+  "do": [
+    "Use for process flows with interactive visualizations",
+    "Use for roadmaps with rich content",
+    "Use for step-by-step explanations with visual aids",
+    "Use appropriate bentoComponent for each step",
+    "Requires features[]"
+  ],
+  "dont": [
+    "CRITICAL: NEVER use the same bentoComponent type for multiple features - each feature MUST have a unique/different bento type (e.g., if one uses 'timeline', others must use 'reveal-icon', 'chat', 'globe', etc.)",
+    "Do not use for non-sequential content",
+    "Do not use with single item"
+  ],
+  "editRules": {
+    "textOnly": true,
+    "layoutLocked": true,
+    "styleLocked": true
+  }
+}

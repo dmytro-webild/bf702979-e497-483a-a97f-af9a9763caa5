@@ -1,0 +1,15 @@
+{
+  "name": "NavbarLayoutFloatingOverlay",
+  "propsSchema": {
+    "navItems": "Array<{name: string, id: string}>",
+    "logoSrc?": "string",
+    "logoAlt?": "string",
+    "className?": "string",
+    "brandName?": "string (default: 'Webild')",
+    "button?": "{text: string, onClick?: () => void, href?: string}",
+    "logoClassName?": "string (default: '')",
+    "logoImageClassName?": "string (default: '')",
+    "buttonClassName?": "string (default: '')",
+    "buttonTextClassName?": "string (default: '')"
+  }
+}

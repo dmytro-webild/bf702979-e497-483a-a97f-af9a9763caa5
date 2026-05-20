@@ -1,0 +1,37 @@
+name: Code Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        run: git clone --depth 1 --branch ${{ gitea.ref_name }} ${{ gitea.server_url }}/${{ gitea.repository }}.git . || exit 1
+
+      - name: Install dependencies
+        run: |
+          if [ -d "/var/node_modules_cache/node_modules" ]; then
+            ln -s /var/node_modules_cache/node_modules ./node_modules
+          else
+            npm ci --prefer-offline --no-audit
+          fi
+        timeout-minutes: 5
+
+      - name: TypeScript check
+        run: npm run typecheck 2>&1 | tee build.log
+        timeout-minutes: 3
+
+      - name: ESLint check
+        run: npm run lint 2>&1 | tee -a build.log
+        timeout-minutes: 3
+
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-log
+          path: build.log
+          retention-days: 1

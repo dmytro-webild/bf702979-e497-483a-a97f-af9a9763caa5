@@ -1,0 +1,32 @@
+.feature-card-twenty-nine-title {
+    font-size: var(--text-2xl);
+}
+
+.feature-card-twenty-nine-description {
+    font-size: var(--text-sm);
+}
+
+/* Mobile touch support - duplicate hover states for is-active class */
+.feature-card-twenty-nine-item.is-active .feature-card-twenty-nine-item-box > div {
+    transform: rotateY(180deg);
+}
+
+.feature-card-twenty-nine-item.is-active .feature-card-twenty-nine-content-wrapper {
+    transform: translateY(var(--hover-translate-y));
+}
+
+.feature-card-twenty-nine-item.is-active .feature-card-twenty-nine-title {
+    color: var(--color-foreground);
+}
+
+.feature-card-twenty-nine-item.is-active .feature-card-twenty-nine-description-wrapper {
+    opacity: 1;
+}
+
+.feature-card-twenty-nine-item.is-active .feature-card-twenty-nine-reveal-bg {
+    --tw-translate-y: 0px !important;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+    left: calc(var(--vw-1_5) * 0.75);
+    bottom: calc(var(--vw-1_5) * 0.75);
+    right: calc(var(--vw-1_5) * 0.75);
+}

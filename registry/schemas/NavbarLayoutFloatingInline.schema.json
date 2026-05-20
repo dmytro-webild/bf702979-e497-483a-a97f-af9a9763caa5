@@ -1,0 +1,17 @@
+{
+  "name": "NavbarLayoutFloatingInline",
+  "propsSchema": {
+    "navItems": "Array<{name: string, id: string}>",
+    "logoSrc?": "string",
+    "logoAlt?": "string",
+    "brandName?": "string (default: 'Webild')",
+    "button": "{text: string, onClick?: () => void, href?: string}",
+    "animateOnLoad?": "boolean (default: true)",
+    "className?": "string (default: '')",
+    "logoClassName?": "string (default: '')",
+    "logoImageClassName?": "string (default: '')",
+    "navItemClassName?": "string (default: '')",
+    "buttonClassName?": "string (default: '')",
+    "buttonTextClassName?": "string (default: '')"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "FooterBaseCard",
+  "propsSchema": {
+    "logoSrc?": "string",
+    "logoAlt?": "string",
+    "logoText": "string (required)",
+    "columns": "Array<{ title: string, items: Array<{ label: string, href: string }> }> - Footer navigation columns",
+    "copyrightText?": "string (default: '© 2025 | Webild')",
+    "onPrivacyClick?": "() => void",
+    "ariaLabel?": "string (default: 'Site footer')",
+    "className?": "string",
+    "containerClassName?": "string",
+    "cardClassName?": "string",
+    "logoClassName?": "string",
+    "logoImageClassName?": "string",
+    "logoTextClassName?": "string",
+    "columnsClassName?": "string",
+    "columnClassName?": "string",
+    "columnTitleClassName?": "string",
+    "columnItemClassName?": "string",
+    "copyrightContainerClassName?": "string",
+    "copyrightTextClassName?": "string",
+    "privacyButtonClassName?": "string"
+  }
+}
